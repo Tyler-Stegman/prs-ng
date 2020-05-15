@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { JsonResponse } from '../model/json-response.class';
-import { User } from '../model/user.class';
+import { Vendor } from '../model/vendor.class';
 
-const url: string = "http://localhost:8080/users/";
+const url: string = "http://localhost:8080/vendors/";
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class VendorService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   list(): Observable<JsonResponse>{
     return this.http.get(url) as Observable<JsonResponse>;
@@ -19,14 +19,13 @@ export class UserService {
   get(id: number): Observable<JsonResponse>{
     return this.http.get(url+id) as Observable<JsonResponse>;
   }
-  create(user: User): Observable<JsonResponse>{
-    return this.http.post(url,user) as Observable<JsonResponse>;
+  create(vendor: Vendor): Observable<JsonResponse>{
+    return this.http.post(url,vendor) as Observable<JsonResponse>;
   }
-  edit(user: User): Observable<JsonResponse>{
-    return this.http.put(url,user) as Observable<JsonResponse>;
+  edit(vendor: Vendor): Observable<JsonResponse>{
+    return this.http.put(url,vendor) as Observable<JsonResponse>;
   }
   delete(id: number): Observable<JsonResponse>{
     return this.http.delete(url+id) as Observable<JsonResponse>;
   }
-  }
-
+}

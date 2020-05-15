@@ -1,0 +1,75 @@
+<span class='component-title'>[{{title}}]</span>
+<span> | <a routerLink="/vendor/list">Return to Vendor List</a></span>
+<p *ngIf='!vendor'>Loading...</p>
+<div *ngIf='vendor'>
+    <main class="single">
+        <table class="table table-sm">
+            <tr>
+                <td>
+                    Code:
+                </td>
+                <td>
+                    <input [(ngModel)]="vendor.code" class="rounded" type="text" placeholder="Code">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Name:
+                </td>
+                <td>
+                    <input [(ngModel)]="vendor.name" class="rounded" type="text" placeholder="Name">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Address:
+                </td>
+                <td>
+                    <input [(ngModel)]="vendor.address" class="rounded" type="text" placeholder="Address">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    City:
+                </td>
+                <td>
+                    <input [(ngModel)]="vendor.city" class="rounded" type="text" placeholder="City">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    State:
+                </td>
+                <td>
+                    <input [(ngModel)]="vendor.state" class="rounded" type="text" placeholder="2 digit state abv only">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Zip:
+                </td>
+                <td>
+                    <input [(ngModel)]="vendor.zip" class="rounded" type="number" placeholder="Zip">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Phone:
+                </td>
+                <td>
+                    <input [(ngModel)]="vendor.phoneNumber" class="rounded" type="text" placeholder="Phone Number">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Email:
+                </td>
+                <td>
+                    <input [(ngModel)]="vendor.email" class="rounded" type="text" placeholder="Email">
+                </td>
+            </tr>
+        </table>
+    </main>
+    <span><button (click)="save()" class="btn btn-sm btn-primary">{{submitBtnTitle}}</button></span> |
+
+</div>

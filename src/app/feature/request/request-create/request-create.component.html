@@ -8,9 +8,7 @@
             <tr>
                 <td>User:</td>
                 <td>
-                    <select [(ngModel)]="request.user" class="rounded">
-                        <option *ngFor="let user of users" [ngValue]='user'>{{user.userName}}</option>
-                    </select>
+                    <input [(ngModel)]="request.user.userName" class="rounded" disabled>
                 </td>
             </tr>
             <tr>
@@ -28,10 +26,6 @@
             <tr>
                 <td>Delivery Mode:</td>
                 <td><input [(ngModel)]="request.deliveryMode" class="rounded" type="text" placeholder="Mail or Pickup"></td>
-            </tr>
-            <tr>
-                <td>Total:</td>
-                <td><input [(ngModel)]="request.total" class="rounded" type="text"></td>
             </tr>
         </table>
     </main>

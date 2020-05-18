@@ -8,7 +8,7 @@ import { RequestService } from 'src/app/service/request.service';
   styleUrls: ['./request-list.component.css']
 })
 export class RequestListComponent implements OnInit {
-  title: string = "Request-List";
+  title: string = "PurchaseRequest-List";
   requests: Request[] = [];
 
   constructor(private requestSvc: RequestService) { }

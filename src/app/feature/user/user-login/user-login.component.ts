@@ -31,7 +31,7 @@ export class UserLoginComponent implements OnInit {
       console.log("jr:", jr);
       if (jr.errors == null) {
         if (jr.data == null) {
-          this.message = "Invalid Username/Password combo.  Retry";
+          this.message = "Invalid Username/Password combination.  Please retry";
         }
         else {
           this.user = jr.data as User;
@@ -41,7 +41,7 @@ export class UserLoginComponent implements OnInit {
         }
       }
       else {
-        this.message = "Invalid Username/Password combo.  Retry";
+        this.message = "Invalid Username/Password combination.  Please retry";
       }
     });
   }

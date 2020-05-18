@@ -6,12 +6,10 @@
         <table class="table table-sm">
             <tr>
                 <td>
-                    User ID:
+                    User:
                 </td>
                 <td>
-                    <select [(ngModel)]="request.user" class="rounded">
-                        <option *ngFor="let user of users" [ngValue]='user'>{{user.id}}</option>
-                    </select>
+                    <input [(ngModel)]="request.user.userName" class="rounded" disabled>
                 </td>
             </tr>
             <tr>

@@ -4,6 +4,7 @@ import { UserService } from 'src/app/service/user.service';
 import { Request } from 'src/app/model/request.class';
 import { RequestService } from 'src/app/service/request.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SystemService } from 'src/app/service/system.service';
 
 
 @Component({
@@ -12,18 +13,17 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./request-create.component.css']
 })
 export class RequestCreateComponent implements OnInit {
-  title: string = "Request-Edit";
+  title: string = "Request-Create";
   requests: Request[] = [];
   users: User[] = [];
   request: Request = new Request();
   submitBtnTitle: string = "Create";
 
-  constructor(private requestSvc: RequestService, private userSvc: UserService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private requestSvc: RequestService, private userSvc: UserService, private sysSvc: SystemService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.userSvc.list().subscribe(jr => {
-      this.users = jr.data as User[];
-    });
+    this.sysSvc.checkLogin();
+    this.request.user = this.sysSvc.loggedInUser;
   }
 
   create() {

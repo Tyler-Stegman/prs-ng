@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Request } from 'src/app/model/request.class';
 import { RequestService } from 'src/app/service/request.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class RequestListComponent implements OnInit {
   ngOnInit(): void {
     this.requestSvc.list().subscribe(jr => {
       this.requests = jr.data as Request[];
+      console.log("List of requests: ", this.requests)
     });
   }
 

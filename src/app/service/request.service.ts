@@ -19,7 +19,7 @@ export class RequestService {
     return this.http.get(url+id) as Observable<JsonResponse>;
   }
   create(request: Request): Observable<JsonResponse>{
-    return this.http.post(url,request) as Observable<JsonResponse>;
+    return this.http.post(url, request) as Observable<JsonResponse>;
   }
   edit(request: Request): Observable<JsonResponse>{
     return this.http.put(url,request) as Observable<JsonResponse>;

@@ -10,12 +10,7 @@ export class SystemService {
 
   constructor(private router: Router) { 
   }
-
-  isAdmin(): boolean { 
-    return (this.loggedInUser == null) ? false : this.loggedInUser.admin;
-  }
   
-
   checkLogin(): void {
     // if user is not logged in, send to login page
     // comment out this code for testing purposes
@@ -24,7 +19,10 @@ export class SystemService {
       this.router.navigateByUrl("/user/login");
     }
   }
-
+  
+  isAdmin(): boolean { 
+    return (this.loggedInUser == null) ? false : this.loggedInUser.admin;
+  }
   isReviewer(): boolean { 
     return (this.loggedInUser == null) ? false : this.loggedInUser.reviewer;
   }

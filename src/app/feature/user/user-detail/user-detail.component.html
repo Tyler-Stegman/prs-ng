@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div *ngIf="user" class="component">
     <section class="heading">
         <span class="page-title font-weight-bold font-italic">{{title}}</span>
@@ -34,12 +35,9 @@
                 <td><input [(ngModel)]="user.email" class="rounded" type="text" disabled></td>
             </tr>
             <tr>
-                <td>Reviewer?:</td>
-                <td><input [(ngModel)]="user.reviewer" class="rounded" type="text" disabled></td>
-            </tr>
-            <tr>
-                <td>Admin?:</td>
-                <td><input [(ngModel)]="user.admin" class="rounded" type="text" disabled></td>
+            <h3>Access Credentials:</h3>
+            <li><strong>Reviewer: </strong>{{ user.reviewer ? "Yes" : "No"}}</li>
+            <li><strong>Admin:  </strong>{{ user.admin ? "Yes" : "No"}}</li>
             </tr>
         </table>
     </main>

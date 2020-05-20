@@ -1,5 +1,9 @@
 <nav>
     <ul>
+        <img width="75" height="75" src='assets/baseline_shopping_cart_black_18dp.png'>
+        <!--<h3 style="color: red;">PRS</h3>-->
+    </ul>
+    <ul>
         <li>Purchase Request System</li>
         <li *ngFor="let mi of menuItems" title="{{mi.tooltip}}">
             <a routerLink="{{mi.href}}">{{mi.display}}</a>

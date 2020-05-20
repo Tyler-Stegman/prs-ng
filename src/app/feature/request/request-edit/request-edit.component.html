@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <span class='component-title'>[{{title}}]</span>
 <span> | <a routerLink="/request/list">Return to Request List</a></span>
 <p *ngIf='!request'>Loading...</p>
@@ -25,7 +26,7 @@
                     Description:
                 </td>
                 <td>
-                    <input [(ngModel)]="request.description" class="rounded" type="text">
+                    <input [(ngModel)]="request.description" class="rounded" type="text" size="75">
                 </td>
             </tr>
             <tr>
@@ -33,7 +34,7 @@
                     Justification:
                 </td>
                 <td>
-                    <input [(ngModel)]="request.justification" class="rounded" type="text">
+                    <input [(ngModel)]="request.justification" class="rounded" type="text" size="75">
                 </td>
             </tr>
             <tr>

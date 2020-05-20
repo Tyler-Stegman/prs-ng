@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div *ngIf="request" class="component">
     <section class="heading">
         <span class="page-title font-weight-bold font-italic">{{title}}</span>
@@ -11,35 +12,35 @@
             </tr>
             <tr>
                 <td>User ID:</td>
-                <td><input [(ngModel)]="request.user.id" class="rounded" type="text" disabled></td>
+                <td><input [(ngModel)]="request.user.id" class="rounded" type="text" size="75" disabled></td>
             </tr>
             <tr>
                 <td>Description:</td>
-                <td><input [(ngModel)]="request.description" class="rounded" type="text" disabled></td>
+                <td><input [(ngModel)]="request.description" class="rounded" type="text" size="75" disabled></td>
             </tr>
             <tr>
                 <td>Justification:</td>
-                <td><input [(ngModel)]="request.justification" class="rounded" type="text" disabled></td>
+                <td><input [(ngModel)]="request.justification" class="rounded" type="text" size="75" disabled></td>
             </tr>
             <tr>
                 <td>Date Needed:</td>
-                <td><input [(ngModel)]="request.dateNeeded" class="rounded" type="date" disabled></td>
+                <td><input [(ngModel)]="request.dateNeeded" class="rounded" type="date" size="75" disabled></td>
             </tr>
             <tr>
                 <td>Delivery Mode:</td>
-                <td><input [(ngModel)]="request.deliveryMode" class="rounded" type="text" disabled></td>
+                <td><input [(ngModel)]="request.deliveryMode" class="rounded" type="text" size="75" disabled></td>
             </tr>
             <tr>
                 <td>Status:</td>
-                <td><input [(ngModel)]="request.status" class="rounded" type="text" disabled></td>
+                <td><input [(ngModel)]="request.status" class="rounded" type="text" size="75" disabled></td>
             </tr>
             <tr>
                 <td>Total:</td>
-                <td><input [(ngModel)]="request.total" class="rounded" type="text" disabled></td>
+                <td><input [(ngModel)]="request.total" class="rounded" type="text" size="75" disabled></td>
             </tr>
             <tr>
                 <td>Submitted Date:</td>
-                <td><input [(ngModel)]="request.submittedDate" class="rounded" type="text" disabled></td>
+                <td><input [(ngModel)]="request.submittedDate" class="rounded" type="text" size="75" disabled></td>
             </tr>
         </table>
     </main>

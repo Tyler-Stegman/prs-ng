@@ -26,7 +26,7 @@
 </div>
 <section class="heading">
     <span class='page-title font-weight-bold font-italic'>[{{ title2 }}]</span>
-    <a routerLink='/line-item/create'><img width="20" height="20" src="assets/add-icon.png" title="Add New Line-Item"></a>
+    <a routerLink='/line-item/create/{{request.id}}'><img width="20" height="20" src="assets/add-icon.png" title="Add New Line-Item"></a>
 </section>
 <table class="table table-sm table-striped">
     <thead>
@@ -39,6 +39,7 @@
             <th>Action</th>
         </tr>
     </thead>
+    <p *ngIf="!lineItems" style="color: crimson;">There are no line items to display.</p>
     <tbody *ngIf="lineItems" class="table table-sm table-striped">
         <tr *ngFor="let lineItem of lineItems">
             <td>{{ lineItem.id }}</td>
@@ -46,13 +47,18 @@
             <td>{{ lineItem.quantity }}</td>
             <td>{{ lineItem.product.price | currency }}</td>
             <td>{{ lineItem.product.price * lineItem.quantity | currency }}</td>
-            <!-- <td>
+            <td>
                 <a routerLink='/line-item/edit/{{ lineItem.id }}'>
                     <img width="20" height="20" src="assets/pencil-icon.png" title="Edit Line Item">
                 </a>
-                <button (click)="delete(lineItem.id)" style="border: none;">
-                    <img width="20" height="20" src="assets/delete.jpg" title="Delete Line Item">
-                </button>
-            </td> -->
+                <a routerLink='/request/request-lines/{{ request.id }}'>
+                   <img (click)="delete(lineItem.id)" width="20" height="20" src="assets/delete.jpg" title="Delete Line Item">
+                    <!-- <span> | <button (click)="delete(lineItem.id)" class="btn btn-sm btn-success">Delete</button></span> -->
+                </a>
+            </td>
+        </tr>
     </tbody>
 </table>
+<a routerLink="/request/list">
+<p *ngIf="lineItems"> <button *ngIf="request.status == 'New'" (click)="submitForReview()" class="butn btn-sm btn-primary">{{submitBtnTitle}}</button></p>
+</a>

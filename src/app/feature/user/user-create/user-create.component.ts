@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/model/user.class';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
+import { SystemService } from 'src/app/service/system.service';
+import { Request } from 'src/app/model/request.class';
 
 @Component({
   selector: 'app-user-create',
@@ -12,10 +14,13 @@ export class UserCreateComponent implements OnInit {
   title: string = "User-Create";
   user: User = new User();
   submitBtnTitle: string = "Create";
+  request: Request = new Request();
 
-  constructor(private userSvc: UserService, private router: Router) { }
+  constructor(private sysSvc: SystemService, private userSvc: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    this.sysSvc.checkLogin();
+    this.request.user = this.sysSvc.loggedInUser;
   }
 
   save() {

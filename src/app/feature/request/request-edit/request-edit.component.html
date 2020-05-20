@@ -6,6 +6,14 @@
         <table class="table table-sm">
             <tr>
                 <td>
+                    ID:
+                </td>
+                <td>
+                    <input [(ngModel)]="request.id" class="rounded" type="text" disabled>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     User:
                 </td>
                 <td>
@@ -43,7 +51,39 @@
                 <td>
                     <input [(ngModel)]="request.deliveryMode" class="rounded" type="text">
                 </td>
+            </tr>
             <tr>
+                <td>
+                   Status:
+                </td>
+                <td>
+                    <input [(ngModel)]="request.status" class="rounded" type="text" disabled>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Total:
+                </td>
+                <td>
+                    <input [(ngModel)]="request.total" class="rounded" type="number" disabled>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Submitted Date:
+                </td>
+                <td>
+                    <input [(ngModel)]="request.submittedDate" class="rounded" type="datetime" disabled>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Reason For Rejection:
+                </td>
+                <td>
+                    <input [(ngModel)]="request.reasonForRejection" class="rounded" type="text" disabled>
+                </td>
+            </tr>
         </table>
     </main>
     <span><button (click)="save()" class="btn btn-sm btn-primary">{{submitBtnTitle}}</button></span> |

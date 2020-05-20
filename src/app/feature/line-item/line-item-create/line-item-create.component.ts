@@ -15,7 +15,8 @@ import { RequestService } from 'src/app/service/request.service';
 })
 export class LineItemCreateComponent implements OnInit {
   title: string = "Line-Item-Create";
-  requests: Request[] = [];
+  request: Request = null;
+  requestId: number = 0;
   products: Product[] = [];
   lineItem: LineItem = new LineItem();
   submitBtnTitle: string = "Create";
@@ -26,14 +27,19 @@ export class LineItemCreateComponent implements OnInit {
     this.productSvc.list().subscribe(jr => {
       this.products = jr.data as Product[];
     });
-    this.requestSvc.list().subscribe(jr => {
-      this.requests = jr.data as Request[];
+    //get the request id from the URL
+    this.route.params.subscribe(parms => this.requestId = parms["id"]);
+    this.requestSvc.get(this.requestId).subscribe(jr => {
+      this.request = jr.data as Request;
+      this.lineItem.request = this.request;
     });
   }
   create() {
     this.liSvc.create(this.lineItem).subscribe(jr => {
       if(jr.errors == null){
-        this.router.navigateByUrl("/line-item/line-item-list");
+        console.log(jr.data);
+        this.ngOnInit();
+        //this.router.navigateByUrl("/request/list");
       }
       else {
         console.log("*** Error creating line-item. ***", this.lineItem, jr.errors)

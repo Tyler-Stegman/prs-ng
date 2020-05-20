@@ -30,6 +30,8 @@ import { LineItemCreateComponent } from './feature/line-item/line-item-create/li
 import { LineItemEditComponent } from './feature/line-item/line-item-edit/line-item-edit.component';
 import { LineItemListComponent } from './feature/line-item/line-item-list/line-item-list.component';
 import { LineItemDetailComponent } from './feature/line-item/line-item-detail/line-item-detail.component';
+import { RequestReviewComponent } from './feature/request/request-review/request-review.component';
+import { RequestApproveComponent } from './feature/request/request-approve/request-approve.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { LineItemDetailComponent } from './feature/line-item/line-item-detail/li
     LineItemCreateComponent,
     LineItemEditComponent,
     LineItemListComponent,
-    LineItemDetailComponent
+    LineItemDetailComponent,
+    RequestReviewComponent,
+    RequestApproveComponent
   ],
   imports: [
     BrowserModule,

@@ -27,6 +27,8 @@ export class RequestCreateComponent implements OnInit {
   }
 
   create() {
+    this.sysSvc.checkLogin();
+    this.request.user = this.sysSvc.loggedInUser;
     this.requestSvc.create(this.request).subscribe(jr => {
       if (jr.errors == null) {
         this.router.navigateByUrl("/request/list");

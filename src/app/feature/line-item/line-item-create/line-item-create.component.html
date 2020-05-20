@@ -5,15 +5,9 @@
     </section>
     <main class="single">
         <table class="table table-sm">
-            <!--<tr>
-                <td>Request ID:</td>
-                <td>
-                    <input [(ngModel)]="lineItem.id" class="rounded" type="text" disabled>
-                </td>
-            </tr>-->
             <tr>
                 <td>Product:</td>
-                <select [(ngModel)]="lineItem.id" class="rounded">
+                <select [(ngModel)]="lineItem.product" class="rounded">
                     <option *ngFor="let product of products" [ngValue]="product">{{ product.name }}</option>
                 </select>
             </tr>
@@ -25,7 +19,9 @@
             </tr>
         </table>
     </main>
-    <span>
-       <span><button (click)="create()" class="btn btn-sm btn-primary">{{submitBtnTitle}}</button></span> | 
-    </span>
+        <a routerLink='/request/request-lines/{{ request.id }}'>
+       <span>
+           <button (click)="create()" class="btn btn-sm btn-primary">{{submitBtnTitle}}</button>
+        </span>
+        </a>
 </div>

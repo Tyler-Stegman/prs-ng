@@ -27,7 +27,7 @@
 </div>
 <section class="heading">
     <span class='page-title font-weight-bold font-italic'>[{{ title2 }}]</span>
-    <a routerLink='/line-item/create/{{request.id}}'><img width="20" height="20" src="assets/add-icon.png" title="Add New Line-Item"></a>
+    <a *ngIf="request.status == 'New'" routerLink='/line-item/create/{{request.id}}'><img width="20" height="20" src="assets/add-icon.png" title="Add New Line-Item"></a>
 </section>
 <table class="table table-sm table-striped">
     <thead>

@@ -19,8 +19,8 @@ export class UserLoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user.userName = 'tstegman';
-    this.user.password = 'irish';
+    this.user.userName = '';
+    this.user.password = '';
 
     this.sysSvc.loggedInUser = null;
   }
@@ -41,7 +41,7 @@ export class UserLoginComponent implements OnInit {
         }
       }
       else {
-        this.message = "Invalid Username/Password combination.  Please retry";
+        this.message = "Invalid Username/Password combination.  Please retry.";
       }
     });
   }

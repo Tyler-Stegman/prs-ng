@@ -1,15 +1,15 @@
 <app-menu></app-menu>
-<div>
-    <section class="heading">
-        <span class="page-title font-weight-bold font-italic">{{title}}</span>
-        <span> | <a routerLink="/request/list">Return to Request List</a></span>
-    </section>
+<section class="heading">
+    <span class="page-title font-weight-bold font-italic">{{title}}</span>
+    <span> | <a routerLink="/request/list">Return to Request List</a></span>
+</section>
+<div *ngIf='lineItem'>
     <main class="single">
         <table class="table table-sm">
             <tr>
                 <td>Product:</td>
                 <select [(ngModel)]="lineItem.product" class="rounded">
-                    <option *ngFor="let product of products" [ngValue]="product">{{ product.name }}</option>
+                    <option *ngFor="let product of products" [ngValue]="product">{{ product.name }} | {{ product.vendor.name }}</option>
                 </select>
             </tr>
             <tr>

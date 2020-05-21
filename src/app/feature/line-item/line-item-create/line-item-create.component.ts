@@ -15,7 +15,7 @@ import { RequestService } from 'src/app/service/request.service';
 })
 export class LineItemCreateComponent implements OnInit {
   title: string = "Line-Item-Create";
-  request: Request = null;
+  request: Request = new Request();
   requestId: number = 0;
   products: Product[] = [];
   lineItem: LineItem = new LineItem();
@@ -24,25 +24,27 @@ export class LineItemCreateComponent implements OnInit {
   constructor(private liSvc: LineitemService, private productSvc: ProductService, private requestSvc: RequestService, private sysSvc: SystemService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.productSvc.list().subscribe(jr => {
-      this.products = jr.data as Product[];
-    });
-    //get the request id from the URL
+    this.sysSvc.checkLogin();
+    this.request.user = this.sysSvc.loggedInUser;
     this.route.params.subscribe(parms => this.requestId = parms["id"]);
+    //get the request id from the URL
     this.requestSvc.get(this.requestId).subscribe(jr => {
-      this.request = jr.data as Request;
-      this.lineItem.request = this.request;
+      this.lineItem.request = jr.data as Request;
+    });
+    this.productSvc.list().subscribe(jr => {
+      this.products = jr.data as Product[];  
     });
   }
   create() {
     this.liSvc.create(this.lineItem).subscribe(jr => {
       if(jr.errors == null){
-        console.log(jr.data);
-        this.ngOnInit();
-        //this.router.navigateByUrl("/request/list");
+        // ** below comments not needed because of logic added to html page. **
+        //console.log(jr.data);
+        //this.ngOnInit();
+        this.router.navigateByUrl("/request/request-lines/" + this.requestId);
       }
       else {
-        console.log("*** Error creating line-item. ***", this.lineItem, jr.errors)
+        console.log("*** Error creating line-item. ***", this.lineItem, jr.errors);
         alert("Error creating Line Item.  Please try again.");
       }
     });

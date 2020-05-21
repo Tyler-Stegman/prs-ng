@@ -4,6 +4,7 @@ import { SystemService } from 'src/app/service/system.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LineitemService } from 'src/app/service/lineitem.service';
 import { Product } from 'src/app/model/product.class';
+import { Request } from 'src/app/model/request.class';
 import { ProductService } from 'src/app/service/product.service';
 
 @Component({
@@ -17,10 +18,14 @@ export class LineItemEditComponent implements OnInit {
   lineItemId: number = 0;
   products: Product[] = [];
   submitBtnTitle: String = "Save";
+  requestId: number = 0;
+  request: Request = new Request();
 
   constructor(private liSvc: LineitemService, private productSvc: ProductService, private sysSvc: SystemService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.sysSvc.checkLogin();
+    this.request.user = this.sysSvc.loggedInUser;
     this.productSvc.list().subscribe(jr => {
       this.products = jr.data as Product[];
     });
@@ -33,10 +38,11 @@ export class LineItemEditComponent implements OnInit {
   save() {
     this.liSvc.edit(this.lineItem).subscribe(jr => {
       if(jr.errors == null){
-        this.router.navigateByUrl("/request/list");
+        this.router.navigateByUrl("/request/request-lines/" + this.lineItem.request.id);
       }
       else {
         console.log("*** Error editing line item. ***", this.lineItem, jr.errors);
+        alert("Error editing Line Item.  Please try again.");
       }
     });
   }

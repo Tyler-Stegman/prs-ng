@@ -13,7 +13,7 @@ import { SystemService } from 'src/app/service/system.service';
 })
 export class RequestLinesComponent implements OnInit {
   title: string = "Request"
-  title2: string = "Line-Item(s)"
+  title2: string = "Cart"
   lineItemId: number = 0;
   request: Request = new Request();
   lineItems: LineItem[] = [];

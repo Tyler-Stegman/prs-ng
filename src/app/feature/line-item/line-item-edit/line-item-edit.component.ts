@@ -26,12 +26,12 @@ export class LineItemEditComponent implements OnInit {
   ngOnInit(): void {
     this.sysSvc.checkLogin();
     this.request.user = this.sysSvc.loggedInUser;
-    this.productSvc.list().subscribe(jr => {
-      this.products = jr.data as Product[];
-    });
     this.route.params.subscribe(parms => this.lineItemId = parms["id"]);
     this.liSvc.get(this.lineItemId).subscribe(jr => {
       this.lineItem = jr.data as LineItem;
+    });
+    this.productSvc.list().subscribe(jr => {
+      this.products = jr.data as Product[];
     });
   }
 
@@ -45,5 +45,9 @@ export class LineItemEditComponent implements OnInit {
         alert("Error editing Line Item.  Please try again.");
       }
     });
+  }
+
+  compProduct(a: Product, b: Product): boolean {
+    return a && b && a.id === b.id;
   }
 }

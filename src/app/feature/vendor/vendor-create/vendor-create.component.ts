@@ -15,12 +15,16 @@ export class VendorCreateComponent implements OnInit {
   vendor: Vendor = new Vendor();
   submitBtnTitle: string = "Create";
   request: Request = new Request();
+  vendors: Vendor[] = [];
 
   constructor(private vendorSvc: VendorService, private sysSvc: SystemService, private router: Router) { }
 
   ngOnInit(): void {
     this.sysSvc.checkLogin();
     this.request.user = this.sysSvc.loggedInUser;
+    this.vendorSvc.list().subscribe(jr => {
+      this.vendors = jr.data as Vendor[];
+    });
   }
 
   save() {
@@ -32,5 +36,9 @@ export class VendorCreateComponent implements OnInit {
         console.log("*** Error creating new vendor. ***", this.vendor, jr.errors);
       }
     });
+  }
+
+  compVendor(a: Vendor, b: Vendor): boolean {
+    return a && b && a.id === b.id;
   }
 }

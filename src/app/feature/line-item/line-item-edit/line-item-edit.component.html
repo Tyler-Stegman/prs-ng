@@ -8,7 +8,7 @@
         <table class="table table-sm">
             <tr>
                 <td>Product:</td>
-                <select [(ngModel)]="lineItem.product" class="rounded">
+                <select [(ngModel)]="lineItem.product" class="rounded" [compareWith]="compProduct">
                     <option *ngFor="let product of products" [ngValue]="product">{{ product.name }} | {{ product.vendor.name }}</option>
                 </select>
             </tr>

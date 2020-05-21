@@ -18,11 +18,11 @@
     </thead>
     <tbody>
         <tr *ngFor="let request of requests">
-            <td>{{ request.user.id }}</td>
+            <td>{{ request.user.userName }}</td>
             <td>{{ request.description }}</td>
-            <td>{{ request.dateNeeded }}</td>
+            <td>{{ request.dateNeeded | date }}</td>
             <td>{{ request.status }}</td>
-            <td>{{ request.submittedDate }}</td>
+            <td>{{ request.submittedDate | date }}</td>
             <td>
                 <a routerLink='/request/detail/{{request.id}}'>
                     <img width='20' height='20' src='assets/details.png' title='Request Details'>

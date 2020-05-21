@@ -18,7 +18,9 @@
                     Name:
                 </td>
                 <td>
-                    <input [(ngModel)]="vendor.name" class="rounded" type="text" placeholder="Name">
+                    <select [(ngModel)]="vendor" class="rounded" [compareWith]="compVendor"> 
+                    <option *ngFor="let vendor of vendors" [ngValue]='vendor'>{{vendor.name}}</option>
+                    </select>
                 </td>
             </tr>
             <tr>

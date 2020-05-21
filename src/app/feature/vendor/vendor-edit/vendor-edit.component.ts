@@ -14,6 +14,7 @@ export class VendorEditComponent implements OnInit {
   title: string = "Vendor-Edit";
   submitBtnTitle: string = "Edit";
   vendor: Vendor = new Vendor();
+  vendors: Vendor[] = [];
   vendorId: number = 0;
   request: Request = new Request();
 
@@ -26,6 +27,9 @@ export class VendorEditComponent implements OnInit {
     this.vendorSvc.get(this.vendorId).subscribe(jr => {
       this.vendor = jr.data as Vendor;
     });
+    this.vendorSvc.list().subscribe(jr => {
+      this.vendors = jr.data as Vendor[];
+    });
   }
 
   save() {
@@ -37,5 +41,9 @@ export class VendorEditComponent implements OnInit {
         console.log("*** Error editing vendor. ***", this.vendor, jr.errors);
       }
     });
+  }
+
+  compVendor(a: Vendor, b: Vendor): boolean {
+    return a && b && a.id === b.id;
   }
 }
